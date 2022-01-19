@@ -1,0 +1,2 @@
+GET https://images-api.nasa.gov/search?q=planets&media_type=image&page=1 HTTP/1.1
+content-type: application/json

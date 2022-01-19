@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: var(--primary);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(50vw, 600px, 75%);
+  background-color: var(--warning);
+  border-radius: 5px;
+  border: 1px solid var(--info);
+  margin: 20px 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: var(--primary);
+}
+
+.image {
+  width: 100%;
+}
+
+.body {
+  padding: 20px;
+}
+
+.copyright {
+  color: var(--info);
+  margin-bottom: 10px;
+}
+
+.like-btn {
+  margin: 30px 0 0;
+}
+
+.explanation-container {
+  display: flex;
+}
+
+.more {
+  cursor: pointer;
+}
+
+.explanation {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 20px;
+  width: 75%;
+}
