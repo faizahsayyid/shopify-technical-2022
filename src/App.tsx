@@ -1,7 +1,7 @@
 import "./App.css";
 import { IoMdPlanet } from "react-icons/io";
 import { BsGithub } from "react-icons/bs";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import { ImageFeed } from "./features/image-feed/ImageFeed";
 import { ImageShare } from "./features/image-share/ImageShare";
 
@@ -11,11 +11,10 @@ function App() {
       <header className="app-header">
         <div style={{ display: "flex", alignItems: "center" }}>
           <IoMdPlanet size="3em" />
-          <h1
-            className="text-warning app-title"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            NASA Explore
+          <h1 className="text-warning app-title">
+            <a href="http://localhost:3000/shopify-technical-2022/">
+              NASA Explore
+            </a>
           </h1>
         </div>
         <a
@@ -26,11 +25,11 @@ function App() {
         </a>
       </header>
       <Router>
-        <Route exact path="/shopify-technical-2022">
-          <ImageFeed />
-        </Route>
-        <Route exact path="/shopify-technical-2022/:id">
+        <Route exact path="/share/:id">
           <ImageShare />
+        </Route>
+        <Route exact path="/">
+          <ImageFeed />
         </Route>
       </Router>
     </div>

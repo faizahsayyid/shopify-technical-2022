@@ -36,7 +36,6 @@ export const fetchImageShare = createAsyncThunk(
         url: item.links[0].href,
       };
     });
-    console.log({ queryResult, id });
     return queryResult[0];
   }
 );
