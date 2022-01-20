@@ -72,7 +72,7 @@ export const ImageCard = ({
 
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(
-      `https://blooming-harbor-69464.herokuapp.com/shopify-technical-2022${nasaId}`
+      `http://localhost:3000/shopify-technical-2022/${nasaId}`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
@@ -114,13 +114,13 @@ export const ImageCard = ({
               {hasLike ? "Unlike" : "Like"}
             </h3>
           </button>
-          <button
+          {/* <button
             className={"btn " + styles["like-btn"]}
             onClick={copyToClipBoard}
           >
             <FaShareSquare />
             <h3 className={styles["like-txt"]}>Share</h3>
-          </button>
+          </button> */}
           {copied && <p className="text-info">Copied To Clipboard!</p>}
         </div>
       </main>
