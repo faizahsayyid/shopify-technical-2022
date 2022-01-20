@@ -4,7 +4,7 @@ import { useAppDispatch } from "../app/hooks";
 import {
   imagesNextPage,
   selectImageStatus,
-} from "../features/image-card/imageCardSlice";
+} from "../features/image-feed/imageFeedSlice";
 
 const useInfiniteImageScrolling = () => {
   const lastElementObserver: MutableRefObject<

@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import imageCardReducer from "../features/image-card/imageCardSlice";
+import imageFeedReducer from "../features/image-feed/imageFeedSlice";
+import imageShareReducer from "../features/image-share/imageShareSlice";
 
 export const store = configureStore({
   reducer: {
-    imageCard: imageCardReducer,
+    imageFeed: imageFeedReducer,
+    imageShare: imageShareReducer,
   },
 });
 

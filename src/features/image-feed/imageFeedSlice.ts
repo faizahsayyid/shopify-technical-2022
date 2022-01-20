@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchImages } from "./imageCardAPI";
-import { ImageCardProps } from "./ImageCard";
+import { fetchImages } from "./imageFeedAPI";
+import { ImageCardProps } from "../image-card/ImageCard";
 import { RootState } from "../../app/store";
 
-export interface ImageCardState {
+export interface ImageFeedState {
   status: "idle" | "loading" | "failed";
   images: ImageCardProps[];
   query: string;
@@ -11,7 +11,7 @@ export interface ImageCardState {
   likes: string | null;
 }
 
-const initialState: ImageCardState = {
+const initialState: ImageFeedState = {
   status: "idle",
   images: [],
   query: "planets",
@@ -46,8 +46,8 @@ export const imagesNextPage = createAsyncThunk<
 >("imageCard/nextPage", async (arg, thunkApi): Promise<ImageCardProps[]> => {
   const state: RootState = thunkApi.getState();
   const response = await fetchImages(
-    state.imageCard.query,
-    state.imageCard.page + 1
+    state.imageFeed.query,
+    state.imageFeed.page + 1
   );
   return response.data.collection.items.map((item: any) => {
     return {
@@ -61,8 +61,8 @@ export const imagesNextPage = createAsyncThunk<
   });
 });
 
-export const imageCardSlice = createSlice({
-  name: "imageCard",
+export const imageFeedSlice = createSlice({
+  name: "imageFeed",
   initialState,
   reducers: {
     addLike: (state, action) => {
@@ -87,6 +87,9 @@ export const imageCardSlice = createSlice({
         state.query = action.payload.query ? action.payload.query : state.query;
         state.page = action.payload.page ? action.payload.page : state.page;
       })
+      .addCase(queryImagesAsync.rejected, (state, action) => {
+        state.status = "failed";
+      })
       .addCase(imagesNextPage.pending, (state) => {
         state.status = "loading";
       })
@@ -94,15 +97,18 @@ export const imageCardSlice = createSlice({
         state.status = "idle";
         state.images = [...state.images, ...action.payload];
         state.page++;
+      })
+      .addCase(imagesNextPage.rejected, (state) => {
+        state.status = "failed";
       });
   },
 });
 
-export const { removeLike, addLike } = imageCardSlice.actions;
+export const { removeLike, addLike } = imageFeedSlice.actions;
 
-export const selectImages = (state: RootState) => state.imageCard.images;
-export const selectImageStatus = (state: RootState) => state.imageCard.status;
-export const selectImageQuery = (state: RootState) => state.imageCard.query;
-export const selectLikes = (state: RootState) => state.imageCard.likes;
+export const selectImages = (state: RootState) => state.imageFeed.images;
+export const selectImageStatus = (state: RootState) => state.imageFeed.status;
+export const selectImageQuery = (state: RootState) => state.imageFeed.query;
+export const selectLikes = (state: RootState) => state.imageFeed.likes;
 
-export default imageCardSlice.reducer;
+export default imageFeedSlice.reducer;

@@ -1,0 +1,30 @@
+.loading {
+    margin: 10px 0;
+}
+
+.loading .dot {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: hsl(0, 0%, 80%);
+    display: inline-block;
+    border-radius: 50%;
+    animation: three-dots 2s ease-in-out 0s infinite alternate;
+}
+
+.loading .dot:nth-child(2) {
+    background-color: hsl(0, 0%, 75%);
+    animation-delay: 0.4s;
+}
+
+.loading .dot:nth-child(3) {
+    background-color: hsl(0, 0%, 70%);
+    animation-delay: 0.8s;
+}
+
+@keyframes three-dots {
+    50% {
+        opacity: 0;
+        transform: scale(0.7) translateY(10px);
+    }
+}

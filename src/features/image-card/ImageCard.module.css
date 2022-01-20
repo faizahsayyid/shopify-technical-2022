@@ -36,7 +36,13 @@
 }
 
 .like-btn {
-  margin: 30px 0 0;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.like-txt {
+  margin-left: 5px;
 }
 
 .explanation-container {
@@ -53,4 +59,10 @@
   text-overflow: ellipsis;
   height: 20px;
   width: 75%;
+}
+
+.btn-container {
+  margin: 30px 0 0 0;
+  display: flex;
+  align-items: center;
 }

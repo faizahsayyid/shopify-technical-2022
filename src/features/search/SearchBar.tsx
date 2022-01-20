@@ -1,7 +1,7 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useAppDispatch } from "../../app/hooks";
-import { queryImagesAsync } from "../image-card/imageCardSlice";
+import { queryImagesAsync } from "../image-feed/imageFeedSlice";
 import styles from "./SearchBar.module.css";
 
 export const SearchBar = () => {

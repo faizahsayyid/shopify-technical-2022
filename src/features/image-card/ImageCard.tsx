@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../app/hooks";
 import styles from "./ImageCard.module.css";
-import { selectLikes, removeLike, addLike } from "./imageCardSlice";
+import { selectLikes, removeLike, addLike } from "../image-feed/imageFeedSlice";
+import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { FaShareSquare } from "react-icons/fa";
 
 export interface ImageCardProps {
   title: string;
@@ -28,6 +30,7 @@ export const ImageCard = ({
   const dispatch = useAppDispatch();
   const likes = useSelector(selectLikes);
   const [hasLike, setHasLike] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   //checks if nasaId is in likes
   useEffect(() => {
@@ -67,6 +70,14 @@ export const ImageCard = ({
     }
   };
 
+  const copyToClipBoard = () => {
+    navigator.clipboard.writeText(
+      `http://localhost:3000/shopify-technical-2022/${nasaId}`
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1000);
+  };
+
   return (
     <figure className={styles.card} ref={innerRef}>
       <header className={styles.header}>
@@ -92,9 +103,26 @@ export const ImageCard = ({
             </p>
           )}
         </div>
-        <button className={"btn " + styles["like-btn"]} onClick={toggleLike}>
-          <h3>{hasLike ? "Unlike" : "Like"}</h3>
-        </button>
+        <div className={styles["btn-container"]}>
+          <button className={"btn " + styles["like-btn"]} onClick={toggleLike}>
+            {hasLike ? (
+              <BsSuitHeartFill size="1.25rem" />
+            ) : (
+              <BsSuitHeart size="1.25rem" />
+            )}
+            <h3 className={styles["like-txt"]}>
+              {hasLike ? "Unlike" : "Like"}
+            </h3>
+          </button>
+          <button
+            className={"btn " + styles["like-btn"]}
+            onClick={copyToClipBoard}
+          >
+            <FaShareSquare />
+            <h3 className={styles["like-txt"]}>Share</h3>
+          </button>
+          {copied && <p className="text-info">Copied To Clipboard!</p>}
+        </div>
       </main>
     </figure>
   );
