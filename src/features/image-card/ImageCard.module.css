@@ -36,9 +36,13 @@
 }
 
 .like-btn {
-  margin: 0 5px;
+  margin: 0 5px 0 0;
   display: flex;
   align-items: center;
+}
+
+.share-btn {
+  margin: 0 0 0 5px;
 }
 
 .like-txt {

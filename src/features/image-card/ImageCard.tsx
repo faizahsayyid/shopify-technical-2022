@@ -115,7 +115,7 @@ export const ImageCard = ({
             </h3>
           </button>
           {/* <button
-            className={"btn " + styles["like-btn"]}
+            className={"btn " + styles["share-btn"]}
             onClick={copyToClipBoard}
           >
             <FaShareSquare />
