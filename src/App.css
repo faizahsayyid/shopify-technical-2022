@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 .app-header {
-  width: 100vw;
+  width: calc(100vw - 40px);
   height: 10vh;
   position: fixed;
   background-color: var(--danger);
   top: 0;
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  justify-content: space-between;
+  padding: 0 20px;
   text-transform: uppercase;
   font-family: "Righteous";
 }
@@ -40,4 +41,13 @@
   margin: 20px;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.git {
+  justify-self: right;
+}
+
+.app-logo {
+  display: "flex";
+  align-items: "center";
 }
