@@ -72,7 +72,7 @@ export const ImageCard = ({
 
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(
-      `https://faizahsayyid.github.io/shopify-technical-2022//${nasaId}`
+      `https://blooming-harbor-69464.herokuapp.com/shopify-technical-2022${nasaId}`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
